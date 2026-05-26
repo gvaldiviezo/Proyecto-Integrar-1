@@ -66,6 +66,36 @@ const lugares = [
     }
 ];
 
+// Función para obtener lugares guardados del localStorage
+function obtenerLugaresGuardados() {
+    const lugaresGuardados = localStorage.getItem('lugaresGuardados');
+    return lugaresGuardados ? JSON.parse(lugaresGuardados) : [];
+}
+
+// Función para guardar un lugar en localStorage
+function guardarLugar(lugar) {
+    const lugaresGuardados = obtenerLugaresGuardados();
+    // Verificar si el lugar ya está guardado
+    const existe = lugaresGuardados.some(l => l.nombre === lugar.nombre);
+    if (!existe) {
+        lugaresGuardados.push(lugar);
+        localStorage.setItem('lugaresGuardados', JSON.stringify(lugaresGuardados));
+    }
+}
+
+// Función para eliminar un lugar del localStorage
+function eliminarLugar(nombreLugar) {
+    let lugaresGuardados = obtenerLugaresGuardados();
+    lugaresGuardados = lugaresGuardados.filter(l => l.nombre !== nombreLugar);
+    localStorage.setItem('lugaresGuardados', JSON.stringify(lugaresGuardados));
+}
+
+// Función para verificar si un lugar está guardado
+function estaGuardado(nombreLugar) {
+    const lugaresGuardados = obtenerLugaresGuardados();
+    return lugaresGuardados.some(l => l.nombre === nombreLugar);
+}
+
 // Función para renderizar las cards
 function renderizarLugares(listadoLugares = lugares) {
     const container = document.querySelector('.lugares-container');
@@ -84,6 +114,12 @@ function renderizarLugares(listadoLugares = lugares) {
         const card = document.createElement('article');
         card.className = 'lugar-card';
         const tematicaTexto = lugar.tematica.join(', ');
+        
+        // Determinar el estado del botón
+        const guardado = estaGuardado(lugar.nombre);
+        const textoBoton = guardado ? 'Eliminar' : 'Guardar';
+        const claseBoton = guardado ? 'guardar-btn eliminado' : 'guardar-btn';
+        
         card.innerHTML = `
             <figure class="lugar-imagen">
                 <img src="${lugar.imagenes}" alt="${lugar.nombre}" class="imagen">
@@ -98,11 +134,50 @@ function renderizarLugares(listadoLugares = lugares) {
                 <blockquote class="resena">${lugar.reseña}</blockquote>
             </section>
             <section class="card-actions">
-                <button class="guardar-btn" aria-label="Guardar lugar">Guardar</button>
+                <button class="${claseBoton}" data-nombre="${lugar.nombre}" aria-label="${textoBoton} lugar">${textoBoton}</button>
             </section>
         `;
         container.appendChild(card);
     });
+    
+    // Agregar event listeners a los botones
+    agregarEventListenerBotones();
+}
+
+// Función para agregar event listeners a los botones de guardar/eliminar
+function agregarEventListenerBotones() {
+    const botones = document.querySelectorAll('.guardar-btn');
+    botones.forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            const nombreLugar = e.target.dataset.nombre;
+            const lugar = lugares.find(l => l.nombre === nombreLugar);
+            
+            if (estaGuardado(nombreLugar)) {
+                // Si está guardado, lo eliminamos
+                eliminarLugar(nombreLugar);
+            } else {
+                // Si no está guardado, lo guardamos
+                guardarLugar(lugar);
+            }
+            
+            // Actualizar el estado visual del botón
+            actualizarBoton(e.target, nombreLugar);
+        });
+    });
+}
+
+// Función para actualizar el estado visual del botón
+function actualizarBoton(boton, nombreLugar) {
+    const guardado = estaGuardado(nombreLugar);
+    const textoBoton = guardado ? 'Eliminar' : 'Guardar';
+    boton.textContent = textoBoton;
+    boton.setAttribute('aria-label', textoBoton + ' lugar');
+    
+    if (guardado) {
+        boton.classList.add('eliminado');
+    } else {
+        boton.classList.remove('eliminado');
+    }
 }
 
 // Función para filtrar lugares por nombre
@@ -182,6 +257,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Escuchar el botón de limpiar filtros
     formulario.addEventListener('reset', () => {
         // Esperar a que se limpien los campos
-        setTimeout(aplicarFiltros, 0);
+        setTimeout(() => {
+            aplicarFiltros();
+            agregarEventListenerBotones();
+        }, 0);
     });
 });
