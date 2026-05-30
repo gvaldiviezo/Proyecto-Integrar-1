@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Secreto de la Ciudad</title>
+    <title>Mis favoritos | Mapa Secreto de la Ciudad</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icon/logo.png">
     <link rel="stylesheet" href="../assets/styles/style.css">
-
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
     <header>
         <div class="logo">
@@ -24,6 +25,24 @@
         </nav>
     </header>
 
+    <main id="main-content" role="main">
+        <section class="favoritos-intro">
+            <h1>Mis Lugares Guardados</h1>
+        </section>
+
+        <section 
+            id="contenedor-guardados"
+            class="lugares-container"
+            aria-live="polite"
+            aria-label="Lista de lugares guardados">
+        </section>
+
+        <section id="no-guardados" class="no-guardados" hidden>
+            <p>Aún no has guardado ningún lugar. Explora la ciudad y guarda tus favoritos para verlos aquí.</p>
+            <a href="explorar.html" class="btn-explorar">Explorar Lugares →</a>
+        </section>
+
+    </main>
 
     <footer>
         <p>&copy; 2026 Mapa Secreto de la Ciudad. Proyecto Integrador - Módulo Web Estática.</p>
@@ -31,5 +50,6 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/guardados.js"></script>
 </body>
 </html>
