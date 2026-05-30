@@ -1,70 +1,26 @@
-// Datos hardcodeados para testear con propiedades de zona y temática
-const lugares = [
-    {
-        nombre: 'Plaza Mayor',
-        direccion: 'Calle Principal 123, Centro',
-        zona: 'Centro',
-        tematica: ['Histórico', 'Paisaje'],
-        imagenes: 'https://via.placeholder.com/300x200?text=Plaza+Mayor',
-        reseña: 'Hermosa plaza histórica con monumentos icónicos'
-    },
-    {
-        nombre: 'Parque Central',
-        direccion: 'Avenida Verde 456, Zona Norte',
-        zona: 'Zona Norte',
-        tematica: ['Al aire libre', 'Paisaje'],
-        imagenes: 'https://via.placeholder.com/300x200?text=Parque+Central',
-        reseña: 'Amplio espacio verde perfecto para paseos familiares'
-    },
-    {
-        nombre: 'Mercado Tradicional',
-        direccion: 'Calle Comercio 789, Barrio Antiguo',
-        zona: 'Barrio Antiguo',
-        tematica: ['Gastronomía', 'Histórico'],
-        imagenes: 'https://via.placeholder.com/300x200?text=Mercado',
-        reseña: 'Mercado tradicional con artesanías y productos locales'
-    },
-    {
-        nombre: 'Librería del Viajero',
-        direccion: 'Calle Libertad 234, Centro',
-        zona: 'Centro',
-        tematica: ['Librería', 'Café'],
-        imagenes: 'https://via.placeholder.com/300x200?text=Libreria',
-        reseña: 'Librería acogedora con café y rincones para leer'
-    },
-    {
-        nombre: 'Café Retro',
-        direccion: 'Avenida Nostalgia 567, Zona Este',
-        zona: 'Zona Este',
-        tematica: ['Café', 'Merienda', 'Histórico'],
-        imagenes: 'https://via.placeholder.com/300x200?text=Cafe+Retro',
-        reseña: 'Café vintage con ambiente relajado y buena música'
-    },
-    {
-        nombre: 'Mirador del Cerro',
-        direccion: 'Camino Alto 890, Zona Oeste',
-        zona: 'Zona Oeste',
-        tematica: ['Al aire libre', 'Paisaje'],
-        imagenes: 'https://via.placeholder.com/300x200?text=Mirador',
-        reseña: 'Lugar con vistas espectaculares al atardecer'
-    },
-    {
-        nombre: 'Pastelería La Merienda',
-        direccion: 'Calle Dulce 345, Centro',
-        zona: 'Centro',
-        tematica: ['Merienda', 'Gastronomía'],
-        imagenes: 'https://via.placeholder.com/300x200?text=Pasteleria',
-        reseña: 'Pastelería artesanal con las mejores meriendas de la ciudad'
-    },
-    {
-        nombre: 'El Ateneo',
-        direccion: 'Florida 340 , Centro',
-        zona: 'Centro',
-        tematica: ['Librería', 'Café'],
-        imagenes: '../assets/img/ateneo.png',
-        reseña: 'Símbolo emblemático de la cultura argentina desde 1912'
+// Variable para almacenar lugares cargados desde JSON
+let lugares = [];
+
+// Cargar lugares desde el archivo JSON
+async function cargarLugares() {
+    try {
+        const response = await fetch('../assets/data/lugares.json');
+        if (!response.ok) {
+            throw new Error(`Error al cargar lugares.json: ${response.status}`);
+        }
+        lugares = await response.json();
+        console.log('Lugares cargados:', lugares.length);
+        return true;
+    } catch (error) {
+        console.error('Error cargando lugares:', error);
+        // Mostrar mensaje de error
+        const container = document.querySelector('.lugares-container');
+        if (container) {
+            container.innerHTML = '<p class="sin-resultados">Error al cargar los lugares. Intenta recargar la página.</p>';
+        }
+        return false;
     }
-];
+}
 
 // Las funciones obtenerLugaresGuardados y eliminarDeFavoritos
 // se cargan desde guardados.js
@@ -144,7 +100,7 @@ function agregarEventListenerBotones() {
             
             if (estaGuardado(nombreLugar)) {
                 // Si está guardado, lo eliminamos
-                eliminarLugar(nombreLugar);
+                eliminarDeFavoritos(nombreLugar);
             } else {
                 // Si no está guardado, lo guardamos
                 guardarLugar(lugar);
@@ -153,7 +109,7 @@ function agregarEventListenerBotones() {
             // Actualizar el estado visual del botón
             actualizarBoton(e.target, nombreLugar);
         });
-    });DeFavoritos
+    });
 }
 
 // Función para actualizar el estado visual del botón
@@ -223,7 +179,15 @@ function aplicarFiltros() {
 }
 
 // Ejecutar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // Cargar lugares desde JSON
+    const cargados = await cargarLugares();
+    
+    if (!cargados) {
+        console.error('No se pudieron cargar los lugares');
+        return;
+    }
+    
     // Renderizar lugares inicialmente
     renderizarLugares();
     
@@ -233,21 +197,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const radiosTematica = document.querySelectorAll('input[name="tematica"]');
     const formulario = document.querySelector('.filtros-busqueda');
     
+    if (!inputNombre || !selectZona || !formulario) {
+        console.error('No se encontraron los elementos del formulario');
+        return;
+    }
+    
     // Escuchar cambios en el input de nombre
-    inputNombre.addEventListener('input', aplicarFiltros);
+    inputNombre.addEventListener('input', () => {
+        console.log('Filtro por nombre');
+        aplicarFiltros();
+    });
     
     // Escuchar cambios en el select de zona
-    selectZona.addEventListener('change', aplicarFiltros);
+    selectZona.addEventListener('change', () => {
+        console.log('Filtro por zona');
+        aplicarFiltros();
+    });
     
     // Escuchar cambios en los radio buttons de temática
     radiosTematica.forEach(radio => {
-        radio.addEventListener('change', aplicarFiltros);
+        radio.addEventListener('change', () => {
+            console.log('Filtro por temática');
+            aplicarFiltros();
+        });
     });
     
     // Escuchar el botón de limpiar filtros
     formulario.addEventListener('reset', () => {
         // Esperar a que se limpien los campos
         setTimeout(() => {
+            console.log('Filtros limpiados');
             aplicarFiltros();
             agregarEventListenerBotones();
         }, 0);
