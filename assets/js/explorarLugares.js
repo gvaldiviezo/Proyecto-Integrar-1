@@ -66,11 +66,8 @@ const lugares = [
     }
 ];
 
-// Función para obtener lugares guardados del localStorage
-function obtenerLugaresGuardados() {
-    const lugaresGuardados = localStorage.getItem('lugaresGuardados');
-    return lugaresGuardados ? JSON.parse(lugaresGuardados) : [];
-}
+// Las funciones obtenerLugaresGuardados y eliminarDeFavoritos
+// se cargan desde guardados.js
 
 // Función para guardar un lugar en localStorage
 function guardarLugar(lugar) {
@@ -81,13 +78,6 @@ function guardarLugar(lugar) {
         lugaresGuardados.push(lugar);
         localStorage.setItem('lugaresGuardados', JSON.stringify(lugaresGuardados));
     }
-}
-
-// Función para eliminar un lugar del localStorage
-function eliminarLugar(nombreLugar) {
-    let lugaresGuardados = obtenerLugaresGuardados();
-    lugaresGuardados = lugaresGuardados.filter(l => l.nombre !== nombreLugar);
-    localStorage.setItem('lugaresGuardados', JSON.stringify(lugaresGuardados));
 }
 
 // Función para verificar si un lugar está guardado
@@ -163,7 +153,7 @@ function agregarEventListenerBotones() {
             // Actualizar el estado visual del botón
             actualizarBoton(e.target, nombreLugar);
         });
-    });
+    });DeFavoritos
 }
 
 // Función para actualizar el estado visual del botón
