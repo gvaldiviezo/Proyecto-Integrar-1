@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa Secreto de la Ciudad</title>
     <link rel="stylesheet" href="../assets/styles/style.css">
+    <link rel="stylesheet" href="../assets/styles/explorar.css">
 </head>
 <body>
 
@@ -14,14 +15,92 @@
         </div>
         <nav>
             <ul>
-                <li><a href="../index.html" class="active">Inicio</a></li>
-                <li><a href="explorar.html">Explorar Lugares</a></li>
+                <li><a href="../../index.html">Inicio</a></li>
+                <li><a href="explorar.html" class="active">Explorar Lugares</a></li>
                 <li><a href="guardados.html">Mis Guardados</a></li>
                 <li><a href="mapaSecreto.html" class="active">Mapa Secreto</a></li>
 
             </ul>
         </nav>
     </header>
+    <main>
+        <section class="busqueda-container">
+            <h1>Explorar Lugares</h1>
+            <form class="filtros-busqueda" aria-label="Formulario de búsqueda de lugares">
+                <fieldset>
+                    <legend>Buscar por nombre</legend>
+                    <input 
+                        type="text" 
+                        id="inputNombre" 
+                        placeholder="Escribe el nombre del lugar..." 
+                        aria-label="Buscar por nombre"
+                        class="input-busqueda"
+                    >
+                </fieldset>
+
+                <fieldset>
+                    <legend>Filtrar por zona</legend>
+                    <select id="selectZona" aria-label="Selecciona una zona">
+                        <option value="">Todas las zonas</option>
+                        <option value="Centro">Centro</option>
+                        <option value="Zona Norte">Zona Norte</option>
+                        <option value="Barrio Antiguo">Barrio Antiguo</option>
+                        <option value="Zona Este">Zona Este</option>
+                        <option value="Zona Oeste">Zona Oeste</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Filtrar por temática</legend>
+                    <div class="tematica-options">
+                        <label>
+                            <input type="radio" name="tematica" value="Al aire libre"> Al aire libre
+                        </label>
+                        <label>
+                            <input type="radio" name="tematica" value="Librería"> Librería
+                        </label>
+                        <label>
+                            <input type="radio" name="tematica" value="Café"> Café
+                        </label>
+                        <label>
+                            <input type="radio" name="tematica" value="Merienda"> Merienda
+                        </label>
+                        <label>
+                            <input type="radio" name="tematica" value="Paisaje"> Paisaje
+                        </label>
+                        <label>
+                            <input type="radio" name="tematica" value="Histórico"> Histórico
+                        </label>
+                        <label>
+                            <input type="radio" name="tematica" value="Gastronomía"> Gastronomía
+                        </label>
+                    </div>
+                </fieldset>
+
+                <button type="reset" class="btn-limpiar" aria-label="Limpiar filtros">Limpiar filtros</button>
+            </form>
+        </section>
+
+        <section class="lugares-container">
+            <article class="lugar-card">
+                <figure class="lugar-imagen">
+                    <img src="" alt="" class="imagen">
+                </figure>
+                <header>
+                    <h3 class="nombre"></h3>
+                </header>
+                <section class="lugar-info">
+                    <address class="direccion"></address>
+                    <p class="zona"></p>
+                    <p class="tematica"></p>
+                    <blockquote class="resena"></blockquote>
+                </section>
+                <section class="card-actions">
+                    <button class="guardar-btn" aria-label="Guardar lugar">Guardar</button>
+                </section>
+            </article>
+        </section>
+    </main>
 
 
     <footer>
@@ -29,6 +108,8 @@
         <p>Desarrollado por el grupo 14</p>
     </footer>
 
+    <script src="../assets/js/guardados.js"></script>
+    <script src="../assets/js/explorarLugares.js"></script>
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
