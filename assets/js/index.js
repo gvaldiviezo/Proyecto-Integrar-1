@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () =>{
         $form.addEventListener("submit", (event)=> {
             event.preventDefault();
 
+            const query = search.value.trim().toLowerCase();
+            
             if (query !== "") {
                 message.style.display = "block"; 
                 message.textContent = "🔍 Buscando...";
