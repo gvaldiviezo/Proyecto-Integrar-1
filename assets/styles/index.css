@@ -81,6 +81,16 @@ main {
     box-shadow: 0 4px 15px rgba(0, 255, 170, 0.3);
 }
 
+#search-message {
+    display: none;           
+    text-align: center;     
+    margin-top: 1.5rem;        
+    color: var(--accent-color);
+    font-weight: 700;          
+    font-size: 1.15rem;        
+    line-height: 1.6;         
+}
+
 @media (min-width: 600px) {
     #general-search-form div {
     display: grid;
