@@ -8,7 +8,7 @@
         "reseña": "excelente servicio, muy rico el café volvería y está muy linda la esquina, 10/10"
     },
     {
-        "nombre": "Libreria del Pasaje",
+        "nombre": "Librería del Pasaje",
         "direccion": "Thames 1762. Autónoma de Buenos Aires",
         "zona": "Zona Norte",
         "tematica": ["Librería", "Café"],
@@ -40,7 +40,7 @@
         "reseña": "Excelente centro comercial para encontrar todo lo necesario y más en Informática, electrónica y tecnología de punta... variedad de locales y especialización en el rubro de las tecnologías actuales."
     },
     {
-        "nombre": "Obelisco",
+        "nombre": "Obelisco Escondido",
         "direccion": "Av. 9 de Julio s/n, C1043 Cdad. Autónoma de Buenos Aires",
         "zona": "Centro",
         "tematica": ["Al aire libre", "Paisaje"],
@@ -56,7 +56,7 @@
         "reseña": "Pastelería artesanal con las mejores meriendas de la ciudad"
     },
     {
-        "nombre": "Jardin en las alturas",
+        "nombre": "Jardín en las alturas",
         "direccion": "Montevideo 1301, C1426 Cdad. Autónoma de Buenos Aires ",
         "zona": "Centro",
         "tematica": ["Al aire libre", "Paisaje"],

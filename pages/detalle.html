@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Lugar - Mapa Secreto</title>
+    <link rel="stylesheet" href="../assets/styles/style.css">
+    <link rel="stylesheet" href="../assets/styles/detalle.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="../index.html">📍 Mapa Secreto</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="explorar.html" class="active">Explorar Lugares</a></li>
+                <li><a href="guardados.html">Mis Guardados</a></li>
+                <li><a href="mapaSecreto.html">Mapa Secreto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="detalle-centrador-layout" id="detalle-contenedor-fondo">
+        <nav class="navegacion-retorno" aria-label="Navegación secundaria">
+            <a href="mapaSecreto.html" class="btn-volver-mapa">← Volver al Mapa Secreto</a>
+        </nav>
+        <article class="lugares-container" aria-live="polite">
+
+            <section class="detalle-header">
+                <h1 id="detalle-nombre">Cargando lugar...</h1>
+                <div class="detalle-etiquetas">
+                    <p><strong class="label-zona">Zona:</strong> <span id="detalle-zona"></span></p>
+                    <p><strong class="label-tematica">Temática:</strong> <span id="detalle-tematica"></span></p>
+                </div>
+            </section>
+
+
+            <figure class="detalle-visual">
+                <img src="" alt="" id="detalle-img" class="imagen-pantalla-completa">
+            </figure>
+
+            <section class="detalle-info">
+                <h2>Ubicación</h2>
+                <address id="detalle-direccion" class="direccion"></address>
+
+                <h2>Reseña y Recomendación</h2>
+                <blockquote id="detalle-argumento" class="resena"></blockquote>
+            </section>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mapa Secreto de la Ciudad. Proyecto Integrador - Módulo Web Estática.</p>
+        <p>Desarrollado por el grupo 14</p>
+    </footer>
+    <script src="../assets/js/detalle.js"></script>
+</body>
+</html>
