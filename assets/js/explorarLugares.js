@@ -97,7 +97,10 @@ function agregarEventListenerBotones() {
         boton.addEventListener('click', (e) => {
             const nombreLugar = e.target.dataset.nombre;
             const lugar = lugares.find(l => l.nombre === nombreLugar);
-            
+           
+            const yaEstabaGuardado = estaGuardado(nombreLugar);
+            actualizarBoton(e.target, !yaEstabaGuardado);
+
             if (estaGuardado(nombreLugar)) {
                 // Si está guardado, lo eliminamos
                 eliminarDeFavoritos(nombreLugar);
@@ -113,8 +116,7 @@ function agregarEventListenerBotones() {
 }
 
 // Función para actualizar el estado visual del botón
-function actualizarBoton(boton, nombreLugar) {
-    const guardado = estaGuardado(nombreLugar);
+function actualizarBoton(boton, guardado) {
     const textoBoton = guardado ? 'Eliminar' : 'Guardar';
     boton.textContent = textoBoton;
     boton.setAttribute('aria-label', textoBoton + ' lugar');
