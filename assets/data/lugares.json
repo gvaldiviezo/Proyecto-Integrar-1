@@ -1,0 +1,66 @@
+[
+    {
+        "nombre": "Café Oscuro",
+        "direccion": "Loyola 1599. Autónoma de Buenos Aires",
+        "zona": "Centro",
+        "tematica": ["Gastronomía", "Café"],
+        "imagenes": "../assets/img/cafe-oscuro.png",
+        "reseña": "excelente servicio, muy rico el café volvería y está muy linda la esquina, 10/10"
+    },
+    {
+        "nombre": "Librería del Pasaje",
+        "direccion": "Thames 1762. Autónoma de Buenos Aires",
+        "zona": "Zona Norte",
+        "tematica": ["Librería", "Café"],
+        "imagenes": "../assets/img/libreria-del-pasaje.png",
+        "reseña": "El clima cálido, el jazz tranquilo, la buena atención y productos riquísimos. Todo eso hace que Los Libros del Pasaje sean cita obligada cualquier día de la semana!"
+    },
+    {
+        "nombre": "Mural Interactivo",
+        "direccion": "Av. Dorrego 1735. Autónoma de Buenos Aires",
+        "zona": "Barrio Antiguo",
+        "tematica": ["Histórico"],
+        "imagenes": "../assets/img/Mural-interactivo.png",
+        "reseña": "Mercado tradicional con artesanías y productos locales"
+    },
+    {
+        "nombre": "Azotea 404",
+        "direccion": "Av. Córdoba 543 4to Piso, C1054AAE C1054AAE, Cdad. Autónoma de Buenos Aires",
+        "zona": "Centro",
+        "tematica": ["Histórico"],
+        "imagenes": "../assets/img/Azotea-404.png",
+        "reseña": "Espacio cultural de residencias, talleres, charlas y actividades varias que funciona dentro del circuito artístico pero a la vez, en sus márgenes. Gestionado por gente que sabe lo que hace y está del lado del bien. Por más azoteas en la ciudad "
+    },
+    {
+        "nombre": "El Sotano",
+        "direccion": "Avenida Nostalgia 567, Zona Este",
+        "zona": "Zona Este",
+        "tematica": ["Tecnología"],
+        "imagenes": "../assets/img/elsotano-tecnologia.png",
+        "reseña": "Excelente centro comercial para encontrar todo lo necesario y más en Informática, electrónica y tecnología de punta... variedad de locales y especialización en el rubro de las tecnologías actuales."
+    },
+    {
+        "nombre": "Obelisco Escondido",
+        "direccion": "Av. 9 de Julio s/n, C1043 Cdad. Autónoma de Buenos Aires",
+        "zona": "Centro",
+        "tematica": ["Al aire libre", "Paisaje"],
+        "imagenes": "../assets/img/obelisco.png",
+        "reseña": "El sitio es muy bonito y emblemático, por las edificaciones."
+    },
+    {
+        "nombre": "Laberinto de luces",
+        "direccion": "Calle Dulce 345, Centro",
+        "zona": "Zona Este",
+        "tematica": ["Merienda", "Gastronomía"],
+        "imagenes": "../assets/img/laberinto-de-luces.png",
+        "reseña": "Pastelería artesanal con las mejores meriendas de la ciudad"
+    },
+    {
+        "nombre": "Jardín en las alturas",
+        "direccion": "Montevideo 1301, C1426 Cdad. Autónoma de Buenos Aires ",
+        "zona": "Centro",
+        "tematica": ["Al aire libre", "Paisaje"],
+        "imagenes": "../assets/img/jardin-en-las-alturas.png",
+        "reseña": "Lindo lugar para caminar .... pasear el perro ... super seguro ...y tranquilo"
+    }
+]

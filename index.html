@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Secreto de la Ciudad</title>
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <link rel="stylesheet" href="./assets/styles/index.css">
+</head>
+<body class="body-mapa-secreto">
+    <header>
+        <div class="logo">
+            <a href="index.html">📍 Mapa Secreto</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="./pages/explorar.html">Explorar Lugares</a></li>
+                <li><a href="./pages/guardados.html">Mis Guardados</a></li>
+                <li><a href="./pages/mapaSecreto.html">Mapa Secreto</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="welcome">
+            <h1>Descrubrí rincones ocultos de tu propia ciudad</h1>
+            <p>Tu guía local de exploración urbana y lifestyle. Encontrá los mejores cafés para estudiar, spots ideales para fotos, ferias de fin de semana, librerías independientes, murales callejeros y plazas tranquilas escondidas del ruido.</p>
+        </section>
+        
+        <section id="general-search">
+            <h2>¿Que lugar secreto querés descubrir hoy?</h2>
+            <form id="general-search-form">
+                <div>
+                    <label for="form-search">Buscar por nombre:</label>
+                    <input type="search" id="form-search" aria-placeholder="Ej:Cafés, librerías, spots...">
+                    <button type="submit" id="btn-search">Buscar</button>
+                </div>
+            </form>
+            <p id="search-message"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mapa Secreto de la Ciudad. Proyecto Integrador - Módulo Web Estática.</p>
+        <p>Desarrollado por el grupo 14</p>
+    </footer>
+
+    <script src="./assets/js/index.js"></script>
+</body>
+</html>

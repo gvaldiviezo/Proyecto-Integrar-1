@@ -1,0 +1,141 @@
+/* =========================================================
+   GUARDADOS.CSS
+   Estilos específicos para la página de Mis Guardados
+========================================================= */
+
+/* Reutiliza .lugar-card de explorar.css — 
+   aquí solo van estilos propios de guardados */
+
+main {
+  padding: 2rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+[hidden] {
+    display: none !important;
+}
+/* =========================
+   INTRO
+========================= */
+
+.favoritos-intro {
+  margin-bottom: 2rem;
+}
+
+.favoritos-intro h1 {
+  color: var(--text-primary);
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
+}
+
+/* =========================
+   CONTENEDOR DE CARDS
+   (mismo grid que explorar)
+========================= */
+
+.lugares-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   ESTADO VACÍO
+========================= */
+
+.no-guardados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  gap: 1.5rem;
+}
+
+.no-guardados p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+.btn-explorar {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  background: linear-gradient(135deg, rgba(0, 255, 170, 0.15), rgba(0, 255, 170, 0.05));
+  border: 1.5px solid var(--accent-color);
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+}
+
+.btn-explorar:hover {
+  background: linear-gradient(135deg, rgba(0, 255, 170, 0.3), rgba(0, 255, 170, 0.15));
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.4);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  main {
+    padding: 1.5rem 2%;
+  }
+
+  .favoritos-intro h1 {
+    font-size: 1.6rem;
+  }
+
+  .lugares-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 1rem;
+  }
+
+  .favoritos-intro h1 {
+    font-size: 1.4rem;
+  }
+}
+/* =========================
+   SKIP LINK (ACCESIBILIDAD)
+========================= */
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 9999;
+    background: var(--accent-color);
+    color: var(--bg-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top var(--transition);
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
